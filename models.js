@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize');
 const db = new Sequelize('postgres://localhost:5432/plantr')
-module.exports = db
-
 
 const Gardener = db.define('gardeners', {
 
@@ -41,3 +39,10 @@ Plot.belongsToMany(Vegetable, {through: 'vegetable_plot'})
 Plot.belongsTo(Gardener)
 Gardener.hasOne(Plot)
 Gardener.belongsTo(Vegetable, {as: 'favorite_vegetable'})
+
+module.exports = {
+  db,
+  Gardener,
+  Plot,
+  Vegetable
+}
